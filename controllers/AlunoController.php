@@ -1,8 +1,8 @@
 <?php
 
     class AlunoController extends Controller {
+        
         #Função de cadastro de aluno
-
         public function cadastrar(){
             $this->view("../views/aluno/cadastro");
         }

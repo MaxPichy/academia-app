@@ -1,21 +1,13 @@
 <?php
+class Conexao{
+        private static $instance;
 
-    class Conexao{
-
-        private $host="localhost";
-        private $db_name="academia";
-        private $username="root";
-        private $password="";
-        public $conectar;
-
-        public function novaConexao(){
-            $this->conectar=null;
-            try{
-                $this->conectar=new PDO("mysql:host=".$this->host.";dbname=".$this->db_name, $this->username, $this->password);
-            } catch(PDOException $exception){
-                echo "Connection error: ".$exception->getMessage();
+        public static function novaConexao(){
+            if (!isset(self::$instance)){
+                self::$instance = new PDO('mysql:host=localhost;dbname=academia','root','');
+                self :: $instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
-            return $this->conectar;
+            return self::$instance;
         }
     }
 
