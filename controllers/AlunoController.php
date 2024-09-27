@@ -1,7 +1,15 @@
 <?php
 
     include_once "../controllers/Controller.php";
+    include_once "../models/Aluno.php";
     $msg = "vazio";
+
+    if(isset($_GET["action"]) && $_GET["action"] === "cadastrar") {
+        $controller = new AlunoController();
+        $controller->cadastrar();
+    } else {
+        echo "Nenhuma ação foi passada! <br>";
+    }
 
     class AlunoController extends Controller {
         
@@ -15,7 +23,21 @@
             $data_nascimento = $_POST["data_nascimento"];
             $genero = $_POST["genero"];
 
-            $alunoModel = new Aluno();
+            // var_dump($nome, $email, $telefone, $data_nascimento, $genero);
+
+            if($nome && $email && $telefone && $data_nascimento && $genero){
+                $alunoModel = new Aluno();
+
+                try{
+                    $alunoModel->cadastrarAluno($nome, $email, $telefone, $data_nascimento, $genero);
+                    echo "Aluno cadastrado com sucesso! <br>";
+                } catch (Exception $e) {
+                    echo "Erro ao cadastrar aluno: " .$e->getMessage();
+                }
+            } else {
+                echo "Dados Inválidos. <br>";
+            }
+            
 
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $alunoModel = $this->model("Aluno");
