@@ -13,12 +13,12 @@
         
         #Função de cadastro de aluno
         public function cadastrar(){
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $nome = $_POST['nome'];
-                $email = $_POST['email'];
-                $telefone = $_POST['telefone'];
-                $data_nascimento = $_POST['data_nascimento'];
-                $genero = $_POST['genero'];
+            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                $nome = $_POST["nome"];
+                $email = $_POST["email"];
+                $telefone = $_POST["telefone"];
+                $data_nascimento = $_POST["data_nascimento"];
+                $genero = $_POST["genero"];
 
                 if ($nome && $email && $telefone && $data_nascimento && $genero) {
                     $alunoModel = new Aluno();
