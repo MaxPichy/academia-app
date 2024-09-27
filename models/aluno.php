@@ -1,5 +1,7 @@
 <?php
 
+    include "../bd/conexao.php";
+
     class Aluno{
 
     private $db;
