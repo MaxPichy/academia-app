@@ -61,6 +61,7 @@
         public function registrarTreino($alunoId, $treinoId){
             $treinoModel = $this->model("Treino");
             $treinoModel->registrarTreino($alunoId, $treinoId);
+            
             header("Location: /aluno/treinos/" .$alunoId);
         }
 
