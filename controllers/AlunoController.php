@@ -49,10 +49,11 @@
             $msg = 2;
         }
 
-        #Função de listar aluo
+        #Função de listar aluno
         public function listar(){
             $alunoModel = $this->model("Aluno");
             $alunos = $alunoModel->listarAlunos();
+
             $this->view("alunos/listar", ["alunos" => $alunos]);
         }
 
