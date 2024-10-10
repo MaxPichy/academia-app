@@ -26,7 +26,7 @@ create table professores(
 create table treinos(
 	id int auto_increment primary key,
     descricao varchar(255),
-    data date,
+    data timestamp default current_timestamp,
 
     aluno_id int,
     constraint treinos_aluno_id foreign key (aluno_id) references alunos(id),
